@@ -42,6 +42,21 @@ class OverworldMap {
         })
     }
 
+    async startCutscene(events){
+        this.isCutscenePlaying = true;
+
+        for(let i = 0; i < events.length; i++){
+            const eventHandle = new OverworldEvent({
+                event: events[i],
+                map: this,
+            })
+            await eventHandle.init();
+        }
+
+        this.isCutscenePlaying = false;
+
+    }
+
     addWall(x, y) {
         this.walls[`${x},${y}`] = true
     }
