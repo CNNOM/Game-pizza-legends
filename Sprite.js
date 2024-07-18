@@ -32,7 +32,7 @@ class Sprite {
         this.currentAnimation = "idle-right" //  текущая анимация
         this.currentAnimationFrame = 0; // показать какой кадр анимации будет отображатся
 
-        this.animationFrameLimit = config.animationFrameLimit || 32;
+        this.animationFrameLimit = config.animationFrameLimit || 16;
         this.animationFrameProgress = this.animationFrameLimit
 
         //Cылка на game object
