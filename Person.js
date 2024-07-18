@@ -21,7 +21,7 @@ class Person extends GameObject {
         if (this.movingProgrssRemaining > 0) {
             this.updatePosition()
         } else {
-            if (this.isPlayerControlled && state.arrow) {
+            if (!state.map.isCutscenePlaying && this.isPlayerControlled && state.arrow) {
                 this.startBehavior(state, {
                     type: "walk",
                     direction: state.arrow,
