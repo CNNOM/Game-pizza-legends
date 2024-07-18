@@ -16,7 +16,8 @@ class Overworld {
 
             Object.values(this.map.gameObject).forEach(object => {
                 object.update({
-                    arrow: this.directionInput.direction
+                    arrow: this.directionInput.direction,
+                    map: this.map,
                 })
             })
             //Draw Lower layer
@@ -39,7 +40,8 @@ class Overworld {
 
     init() {
         this.map = new OverworldMap(window.OverworldMap.DemoRoom)
-
+        this.map.mountObject();
+        console.log(this.map.walls);
         this.directionInput = new DirectionInput();
         this.directionInput.init()
 
