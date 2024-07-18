@@ -20,8 +20,8 @@ class Person extends GameObject {
 
         if (this.movingProgrssRemaining > 0) {
             this.updatePosition()
-        }else{
-            if(this.isPlayerControlled && state.arrow){
+        } else {
+            if (this.isPlayerControlled && state.arrow) {
                 this.startBehavior(state, {
                     type: "walk",
                     direction: state.arrow,
@@ -35,8 +35,11 @@ class Person extends GameObject {
 
     startBehavior(state, behavior) {
         this.direction = behavior.direction;
-        if(behavior.type === "walk") {
-            if(state.map.isSpaceTaken(this.x, this.y, this.direction)){
+        if (behavior.type === "walk") {
+            if (state.map.isSpaceTaken(this.x, this.y, this.direction)) {
+                behavior.retry && setTimeout(() => {
+                    this.startBehavior(state, behavior)
+                }, 10)
                 return;
             }
 
@@ -46,8 +49,8 @@ class Person extends GameObject {
 
         }
 
-        if(behavior.type === "stand") {
-            setTimeout(() =>{
+        if (behavior.type === "stand") {
+            setTimeout(() => {
                 utils.emirEvent("PersonStandComplete", {
                     whoId: this.id
                 })
@@ -60,7 +63,7 @@ class Person extends GameObject {
         this[property] += change;
         this.movingProgrssRemaining -= 1;
 
-        if(this.movingProgrssRemaining === 0){
+        if (this.movingProgrssRemaining === 0) {
             utils.emirEvent("PersonWalkingComplete", {
                 whoId: this.id
             })
@@ -68,14 +71,12 @@ class Person extends GameObject {
     }
 
 
-    updateSprite(){
+    updateSprite() {
         if (this.movingProgrssRemaining > 0) {
             this.sprite.setAnimation("walk-" + this.direction)
             return;
         }
         this.sprite.setAnimation("idle-" + this.direction)
-
-
 
 
     }
