@@ -9,7 +9,7 @@ class OverworldMap {
         this.upperImage = new Image();
         this.upperImage.src = config.upperSrc;
 
-        this.isCutscenePlaying = true;
+        this.isCutscenePlaying = false;
 
     }
 
@@ -54,6 +54,8 @@ class OverworldMap {
         }
 
         this.isCutscenePlaying = false;
+
+        Object.values(this.gameObject).forEach((object) => object.doBehaviorEvent(this));
 
     }
 
