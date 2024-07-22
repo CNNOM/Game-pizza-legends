@@ -51,7 +51,7 @@ class Person extends GameObject {
         }
 
         if (behavior.type === "stand") {
-            this.isPlayerControlled = true;
+            this.isStanding = true;
             setTimeout(() => {
                 utils.emirEvent("PersonStandComplete", {
                     whoId: this.id
