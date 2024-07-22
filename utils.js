@@ -21,7 +21,6 @@ const utils = {
         } else if (direction === "down") {
             y += size
         }
-        console.log(x, y, direction)
         return {x, y};
     },
 

@@ -59,6 +59,19 @@ class OverworldMap {
 
     }
 
+    checkForActionCutscene(){
+        const hero = this.gameObject["hero"];
+        const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
+        const match = Object.values(this.gameObject).find(object => {
+            return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
+        })
+        console.log({match})
+
+        if(!this.isCutscenePlaying && match && match.talking.length){
+            this.startCutscene(match.talking[0].event)
+        }
+    }
+
     addWall(x, y) {
         this.walls[`${x},${y}`] = true
     }
@@ -93,6 +106,13 @@ window.OverworldMap = {
                     {type: "stand", direction: "up", time: 800},
                     {type: "stand", direction: "right", time: 1200},
                     {type: "stand", direction: "up", time: 300},
+                ],
+                talking:[
+                    {
+                        event: [
+                            {type: "textMessage", text: "авыаоукщащкоащь", faceHero: "npcA"},
+                        ]
+                    }
                 ]
             }),
             npcB: new Person({
