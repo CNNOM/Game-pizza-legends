@@ -54,10 +54,14 @@ class Overworld {
         })
     }
 
+    startMap(mapConfig){
+        this.map = new OverworldMap(mapConfig);
+        this.map.overworld = this;
+        this.map.mountObject();
+    }
 
     init() {
-        this.map = new OverworldMap(window.OverworldMap.DemoRoom)
-        this.map.mountObject();
+        this.startMap(window.OverworldMap.DemoRoom);
 
         this.bindActionInput();
         this.bindHeroPositionCheck();
