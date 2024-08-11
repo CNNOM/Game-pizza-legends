@@ -3,6 +3,7 @@ class Person extends GameObject {
         super(config);
 
         this.movingProgrssRemaining = 0;
+        this.isStanding = false;
 
         this.isPlayerControlled = config.isPlayerControlled || false
 
@@ -50,10 +51,12 @@ class Person extends GameObject {
         }
 
         if (behavior.type === "stand") {
+            this.isStanding = true;
             setTimeout(() => {
                 utils.emirEvent("PersonStandComplete", {
                     whoId: this.id
                 })
+                this.isStanding = false;
             }, behavior.time)
         }
     }
