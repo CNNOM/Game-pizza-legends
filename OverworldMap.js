@@ -111,6 +111,7 @@ window.OverworldMap = {
                     {
                         event: [
                             {type: "textMessage", text: "авыаоукщащкоащь", faceHero: "npcA"},
+                            {who: "hero", type: "walk", direction:"up"},
                         ]
                     }
                 ]
