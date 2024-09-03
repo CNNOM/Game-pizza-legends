@@ -29,14 +29,19 @@ class TextMessage {
 
         this.actionListener = new KeyPressListener("Enter", () => {
 
-            this.actionListener.unbind()
             this.done();
         })
     }
 
     done(){
-        this.element.remove();
-        this.onComplete();
+        if(this.revealingText.isDone){
+            this.element.remove();
+            this.onComplete();
+            this.actionListener.unbind()
+
+        }else{
+            this.revealingText.warpToDone();
+        }
     }
 
     init(container) {
