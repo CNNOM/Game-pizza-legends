@@ -61,7 +61,7 @@ class Overworld {
     }
 
     init() {
-        this.startMap(window.OverworldMap.Kitchen);
+        this.startMap(window.OverworldMap.DemoRoom);
 
         this.bindActionInput();
         this.bindHeroPositionCheck();
@@ -72,6 +72,7 @@ class Overworld {
         this.startGameLoop();
 
         this.map.startCutscene([
+            // {type: "changMap", map: "DemoRoom"}
             { type: "textMessage", text: "Равным образом повышение уровня гражданского сознания позволяет оценить значение модели..."},
 
         ])
