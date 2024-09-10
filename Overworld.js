@@ -72,8 +72,9 @@ class Overworld {
         this.startGameLoop();
 
         this.map.startCutscene([
+            {type: "battle"}
             // {type: "changMap", map: "DemoRoom"}
-            { type: "textMessage", text: "Равным образом повышение уровня гражданского сознания позволяет оценить значение модели..."},
+            // { type: "textMessage", text: "Равным образом повышение уровня гражданского сознания позволяет оценить значение модели..."},
 
         ])
 
