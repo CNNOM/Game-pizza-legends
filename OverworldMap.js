@@ -253,7 +253,37 @@ window.OverworldMap = {
                     }
                 ]
             }),
-
+        },
+        cutsceneSpace:{
+            [utils.asGridCoords(5, 10)]:[
+                {
+                    events:[
+                        {type: "changMap", map: "DiningRoomLower"}
+                    ]
+                }
+            ]
         }
+    },
+    DiningRoomLower:{
+        lowerSrc: "images/maps/DiningRoomLower.png",
+        upperSrc: "images/maps/DiningRoomUpper.png",
+        gameObject:{
+            hero: new Person({
+                isPlayerControlled: true,
+                x: utils.withGrid(7),
+                y: utils.withGrid(4),
+            })
+        },
+        cutsceneSpace:{
+            [utils.asGridCoords(7, 3)]:[
+                {
+                    events:[
+                        {type: "changMap", map: "Kitchen"}
+                    ]
+                }
+            ]
+        }
+
+
     }
 }
